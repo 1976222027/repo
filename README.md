@@ -15,3 +15,25 @@ allprojects {
     }
 }
 ```
+~/.gradle/gradle.properties
+MAVEN_PRIVATE_URL = https://gitee.com/mahongyin/repo/raw/main/
+MAVEN_LOCAL_PATH = D:/repo
+
+// Maven Private Repo
+repositories {
+    maven { url MAVEN_PRIVATE_URL }
+}
+// Maven Private Deploy
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            repository(url: "file://${MAVEN_LOCAL_PATH}" )
+        }
+    }
+}
+发布和上传
+# 发布到本地
+gradle uploadArchives
+# 提交到git仓库
+cd ${MAVEN_LOCAL_PATH}
+git add . && git commit -m "upload pom" && git push origin master

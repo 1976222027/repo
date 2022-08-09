@@ -1,0 +1,13 @@
+// Maven Private Repo
+repositories {
+    maven { url 'https://gitee.com/mahongyin/repo/raw/main/' }
+}
+
+// Maven Private Deploy
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            repository(url: "file://D:/repo/")
+        }
+    }
+}
